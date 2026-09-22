@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Production: frontend and backend are on the same Render URL.
 // Local development: optionally set REACT_APP_BACKEND_URL.
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
 export const API = `${BACKEND_URL}/api`;
 
 export const api = axios.create({ baseURL: API });
