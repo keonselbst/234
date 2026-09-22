@@ -1,0 +1,149 @@
+{
+  "theme": {
+    "mode": "dark",
+    "description": "Minimalist corporate dashboard with industrial liquid glass elements. Deep obsidian background allows the bright frosted glass panels to stand out, evoking precision, manufacturing, and high-tech management."
+  },
+  "typography": {
+    "headings": {
+      "family": "Manrope, sans-serif",
+      "weights": ["400", "700", "800"],
+      "usage": "Corporate, clean, technical. Used for all dashboard metrics, titles, and structural headers."
+    },
+    "body": {
+      "family": "IBM Plex Sans, sans-serif",
+      "weights": ["400", "500", "600"],
+      "usage": "Highly legible font for data-heavy tables, forms, and CRM details."
+    },
+    "rules": [
+      "No generic Inter for headings.",
+      "Use tracking-tight for H1-H3.",
+      "Labels must be Uppercase + Tiny + Wide Spacing (tracking-[0.2em]).",
+      "The jump between a heading and its subheading must not exceed 2 Tailwind steps."
+    ]
+  },
+  "colors": {
+    "background": {
+      "primary": "#090A0F",
+      "secondary": "#0F111A",
+      "description": "Deep Slate/Obsidian to give the industrial metallic feel. Never pure black."
+    },
+    "accent": {
+      "primary": "#FF5722",
+      "secondary": "#E1FF00",
+      "description": "Signal Orange and Volt Yellow for high-visibility industrial actions, alerts, and KPIs."
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A0A5B5",
+      "muted": "#64697A"
+    },
+    "glass": {
+      "panel": "rgba(255, 255, 255, 0.03)",
+      "border": "rgba(255, 255, 255, 0.1)",
+      "highlight": "rgba(255, 255, 255, 0.05)"
+    },
+    "rules": [
+      "Avoid Teal Green or Teal Blue entirely.",
+      "Hover state color must be a lighter hue of ACTIVE state color.",
+      "No complete transparent backgrounds on interactive elements with content underneath.",
+      "Never use pure #000000. Always tint neutrals."
+    ]
+  },
+  "visual_enhancers": {
+    "liquid_glass": {
+      "css_classes": "bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]",
+      "usage": "Apply to main dashboard panels, sidebar, and floating AI assistant widgets."
+    },
+    "textures": "Subtle noise overlay (opacity-10) on the background to make the environment feel physical and industrial.",
+    "shapes": "Smooth rounded corners (rounded-3xl for big panels, rounded-xl for inner cards) to mimic the surface tension of liquid."
+  },
+  "layouts": {
+    "dashboard_grid": {
+      "strategy": "High Density Grid with liquid glass panels.",
+      "base_classes": "grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-6",
+      "widgets": [
+        "KPI Summary: col-span-12 md:col-span-3",
+        "Primary Chart (Budget/Orders): col-span-12 md:col-span-6 row-span-2",
+        "Materials/Stock Feed: col-span-12 md:col-span-3 row-span-2"
+      ]
+    },
+    "spacing": "Generous Spacing (p-6, p-8) inside liquid glass containers to prevent text collision. Use grid layout directly on children.",
+    "alignment": "Left-align dense content and tables. Mobile-first responsive always."
+  },
+  "components": {
+    "sidebar": "Floating liquid glass panel (m-4, rounded-3xl) detached from the edge. Include language toggle (RU/EN).",
+    "tables": "Cardless style inside glass panels. Row hover with 'hover:bg-white/5'. Headers use IBM Plex Sans, uppercase, muted.",
+    "avatars": "Custom round liquid glass wrapper for employee profile pictures. Includes UID badge overlay for access cards.",
+    "ai_assistant": "Floating widget in bottom right. Deep blur, signal orange accent ping animation (GigaChat integration point).",
+    "buttons": "Pill-shaped (rounded-full). Primary buttons use Signal Orange bg with White text. Secondary uses Glass effect.",
+    "forms": "Use Shadcn Form components. Inputs should have bg-black/20 with border-white/10 to sink into the glass panels."
+  },
+  "motion": {
+    "interactions": "Hover states: slightly lighter glass (bg-white/10), scale up (scale-[1.02]).",
+    "transitions": "Explicit transitions only. Use 'transition-colors duration-200' or 'transition-transform duration-300 ease-out'. Avoid 'transition-all'."
+  },
+  "accessibility": {
+    "contrast": "Ensure text over glass meets APCA minimums. Add text-shadow or inner glow if background is too bright.",
+    "testing": "All interactive elements MUST include data-testid (e.g., data-testid='login-submit-btn', data-testid='lang-toggle')."
+  },
+  "media": {
+    "icons": "Use @phosphor-icons/react or lucide-react. Industrial, technical, clean strokes.",
+    "charts": "Use Recharts for KPI monitoring, Budget, and Order schedules. Keep tooltips styled with liquid glass."
+  },
+  "images": {
+    "industrial_fans": [
+      {
+        "url": "https://images.unsplash.com/photo-1513828583688-c52646db42da?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwZmFuJTIwbWFudWZhY3R1cmluZ3xlbnwwfHx8fDE3ODY1MjAwMDd8MA&ixlib=rb-4.1.0&q=85",
+        "description": "gray commercial machine",
+        "category": "Dashboard Headers / Production Section"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1582558006297-f996ed8adfec?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwZmFuJTIwbWFudWZhY3R1cmluZ3xlbnwwfHx8fDE3ODY1MjAwMDd8MA&ixlib=rb-4.1.0&q=85",
+        "description": "gray and black fan turned on in close up photography",
+        "category": "Login Screen Background / Hero Overlay"
+      }
+    ],
+    "blueprints": [
+      {
+        "url": "https://images.unsplash.com/photo-1721244654346-9be0c0129e36?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwzfHxibHVlcHJpbnQlMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzg2NTIwMDA3fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Architectural blueprint",
+        "category": "Models and Drawings Database Previews"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1742415106102-77bbfe14b872?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHw0fHxibHVlcHJpbnQlMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzg2NTIwMDA3fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Blueprint for complex systems",
+        "category": "Models and Drawings Database Previews"
+      }
+    ],
+    "avatars": [
+      {
+        "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc4NjUxMjIyMnww&ixlib=rb-4.1.0&q=85",
+        "description": "man portrait",
+        "category": "Employee / Manager Avatars"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc4NjUxMjIyMnww&ixlib=rb-4.1.0&q=85",
+        "description": "woman portrait",
+        "category": "Employee / Manager Avatars"
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Use Shadcn UI components but strip default Vercel look. Restyle tables and inputs to have the liquid glass aesthetic using Tailwind backdrop-blur and borders.",
+    "Implement language toggle (Russian/English) prominently in the header or sidebar.",
+    "Ensure 'lucide-react' or 'phosphor-icons' are used consistently for a technical corporate look.",
+    "Use sonner for toast notifications (import from /app/frontend/src/components/ui/sonner.js).",
+    "Avoid centering layouts. Align left for data-heavy sections.",
+    "Do NOT use HTML <select> or <input type='date'>. Use Shadcn equivalents."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic outputs. Make creative, distinctive frontends that surprise and delight.",
+    "Create depth through layered design elements with z-index hierarchy and glassmorphism (12-24px blur).",
+    "Never apply universal transition (transition: all) to prevent breaking transforms.",
+    "Never center align the app container (.App { text-align: center; }).",
+    "Always use modern button styles (pill-shaped or sharp) with interaction animations.",
+    "Do not use AI emoji characters (🤖🧠💭💡) for icons.",
+    "Include micro-animations for all interactive elements (hover states, entrance).",
+    "Prioritize pre-existing components from src/components/ui."
+  ]
+}

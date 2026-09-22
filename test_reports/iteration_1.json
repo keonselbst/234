@@ -1,0 +1,37 @@
+{
+  "summary": "Backend smoke tests for FanOps ERP: 23/24 checks passed. Auth (login/me/401), Department seeding + CRUD, Employee register (auto access_uid) + list/update/delete, non-admin 403 role checks, full CRUD for materials/leads/customers/suppliers/orders/budget, /upload base64, models create+list, AI assistant with Emergent LLM fallback (provider='Emergent LLM (fallback)'), assistant history, profile update, and change-password (wrong old => 400, correct old => 200) all working. Only one minor discrepancy: dashboard summary uses key 'low_stock_items' instead of expected 'low_stock' array (the KPI count 'low_stock' is present in kpis). Login response returns 'token' (not 'access_token') — noted, front-end should use 'token'.",
+  "tested_scope": ["backend", "auth", "integration"],
+  "passed": [
+    "POST /api/auth/login admin returns JWT + admin user (key: 'token')",
+    "GET /api/auth/me returns user with access_uid",
+    "GET /api/auth/me without Bearer => 401",
+    "GET /api/departments returns 4 seeded departments with custom_roles",
+    "Department CRUD (POST/PUT/DELETE) as admin",
+    "POST /api/auth/register creates employee w/ auto access_uid",
+    "GET/PUT/DELETE /api/employees",
+    "Non-admin gets 403 on POST /auth/register and POST /departments",
+    "Full CRUD /materials /leads /customers /suppliers /orders /budget",
+    "POST /api/upload returns base64 data_url",
+    "POST /api/models with preview_url + GET list",
+    "GET /api/dashboard/summary returns kpis (all required fields) + recent_orders + recent_leads arrays",
+    "POST /api/assistant/chat falls back to Emergent LLM (provider='Emergent LLM (fallback)') and returns valid text (no crash)",
+    "GET /api/assistant/history",
+    "PUT /api/auth/profile updates fields",
+    "POST /api/auth/change-password: wrong old => 400, correct old => 200 (reverted)"
+  ],
+  "failed": [
+    {
+      "area": "GET /api/dashboard/summary",
+      "issue": "Response uses 'low_stock_items' (array) instead of 'low_stock' as specified. The 'low_stock' key exists inside kpis as a count integer, which conflicts with an array-level 'low_stock' expectation. Front-end contract mismatch risk.",
+      "evidence": "Response: kpis.low_stock=0 (int); top-level has 'low_stock_items': [] but no 'low_stock' array.",
+      "priority": "LOW"
+    }
+  ],
+  "action_items": [
+    "Decide contract: either rename top-level 'low_stock_items' -> 'low_stock' (matches spec) OR update spec/frontend to consume 'low_stock_items'.",
+    "Note that /api/auth/login returns key 'token' (not 'access_token') — ensure frontend reads response.token."
+  ],
+  "success_rate": {"backend": "96%", "frontend": "n/a"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
