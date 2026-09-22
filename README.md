@@ -92,3 +92,7 @@ REACT_APP_BACKEND_URL=http://localhost:8000
 Файлы пользователей сейчас хранятся как Base64 в MongoDB. Это сохранено специально, чтобы не добавлять S3/Cloudinary и другие сервисы в простой deploy. Для больших объёмов файлов позже лучше вынести файлы в object storage.
 
 Не храните реальные пароли в GitHub. Используйте Environment Variables Render.
+
+
+### Vite fix
+JSX entry files use `.jsx` extension so Vite parses them correctly. Emergent runtime scripts were removed from production HTML.
